@@ -14,7 +14,7 @@
   "routes": [
     {
       "src": "/latest",
-      "dest": "/reports/2025-12-30.html"
+      "dest": "/reports/2025-12-monthly.html"
     }
   ]
 }

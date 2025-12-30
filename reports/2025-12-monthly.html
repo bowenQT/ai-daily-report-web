@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI 行业月报 | 2025年12月</title>
+  <meta name="description" content="2025年12月 AI 行业重大事件回顾：Meta 收购 Manus，Nvidia 收购 Groq，Yann LeCun 创办世界模型公司，AI Agent 成为主战场">
+  <link rel="stylesheet" href="../assets/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <button class="theme-toggle" onclick="toggleTheme()" title="切换主题"></button>
+
+  <div class="container">
+    <!-- Header -->
+    <header class="header">
+      <h1>AI 行业月报</h1>
+      <div class="meta">
+        <span>2025年12月（11-30 至 12-30）</span>
+        <span>40+ 条资讯</span>
+        <span>12+ 信息源</span>
+      </div>
+    </header>
+
+    <!-- Summary -->
+    <section class="summary-card">
+      <h2>本月核心</h2>
+      <p>AI 行业进入「大整合时代」：Meta 收购 AI Agent 明星公司 Manus（$50亿+）、Nvidia 收购芯片竞争对手 Groq 并授权其技术、Yann LeCun 创办世界模型公司（估值$50亿+）。行业叙事从「能对话」转向「能干活」，AI Agent 成为2025年最热赛道。与此同时，GitHub 开源社区涌现大量 AI Agent 开发框架，Anthropic 明确2026年目标是让 AI「可靠完成任务」。</p>
+    </section>
+
+    <!-- Monthly Highlights -->
+    <section class="section">
+      <h2 class="section-title"><span class="icon">TOP</span> 月度要闻 TOP10</h2>
+
+      <article class="news-card top-1">
+        <h3><span class="rank">1</span>Meta 收购 Manus，金额超 $50 亿<span class="date">12-30</span></h3>
+        <p class="summary">AI Agent 明星公司 Manus 被 Meta 收购，创始人肖弘将出任 Meta 副总裁。这是华人 AI 创业者的里程碑式胜利，也是 AI Agent 赛道迄今最大并购案。</p>
+        <div class="editor-comment">
+          <div class="label">编辑点评</div>
+          <p>Meta 此举意在补齐 AI Agent 执行力短板。Manus 以其出色的任务执行能力著称，而 Meta 虽有 Llama 大模型，但在 Agent 层面一直缺乏竞争力产品。这笔收购印证了 2025 年 AI 行业的核心叙事：从「能对话」到「能干活」的转变。Manus 从发布到被收购仅用时数月，创造了 AI 创业的新速度纪录。</p>
+        </div>
+        <a href="https://mp.weixin.qq.com" target="_blank" class="source-link">极客公园 / InfoQ / 硅星人Pro / MacTalk / 十字路口</a>
+      </article>
+
+      <article class="news-card top-2">
+        <h3><span class="rank">2</span>Nvidia 授权 Groq 芯片技术并聘请其 CEO<span class="date">12-24</span></h3>
+        <p class="summary">英伟达与 AI 芯片挑战者 Groq 达成技术授权协议，并聘请 Groq CEO 加入。这笔交易被报道金额约 $200 亿，进一步巩固 Nvidia 算力霸主地位。</p>
+        <div class="editor-comment">
+          <div class="label">编辑点评</div>
+          <p>Groq 的 LPU 架构在推理速度上有独特优势，是少数能对 Nvidia 形成威胁的初创公司。黄仁勋的收购策略一贯是「买下潜在对手」，从 Mellanox 到 Groq，Nvidia 的护城河越挖越深。有分析指出，这种「吸纳式竞争」策略让 Nvidia 在 AI 芯片领域几乎没有对手。</p>
+        </div>
+        <a href="https://techcrunch.com" target="_blank" class="source-link">TechCrunch / 硅星人Pro</a>
+      </article>
+
+      <article class="news-card top-3">
+        <h3><span class="rank">3</span>Yann LeCun 创办世界模型公司，估值 $50 亿+<span class="date">12-19</span></h3>
+        <p class="summary">Meta 首席 AI 科学家 Yann LeCun 确认创办新的「世界模型」创业公司，据 TechCrunch 报道估值超过 50 亿美元，代表 AI 发展的新方向。</p>
+        <div class="editor-comment">
+          <div class="label">编辑点评</div>
+          <p>世界模型（World Model）是 LeCun 长期倡导的 AI 方向，强调让 AI 理解物理世界的因果关系，而非单纯的语言模式匹配。LeCun 一直批评当前 LLM 的局限性，认为真正的智能需要对世界有物理层面的理解。这可能代表后 LLM 时代 AI 的发展方向。</p>
+        </div>
+        <a href="https://techcrunch.com" target="_blank" class="source-link">TechCrunch</a>
+      </article>
+
+      <article class="news-card top-4">
+        <h3><span class="rank">4</span>火山引擎成为 2025 春晚独家 AI 合作伙伴<span class="date">12-30</span></h3>
+        <p class="summary">字节跳动旗下火山引擎将代表字节登上春晚舞台，AI 技术首次深度参与国民级娱乐节目，预计将有豆包相关的互动玩法。</p>
+        <div class="editor-comment">
+          <div class="label">编辑点评</div>
+          <p>春晚是中国最大的流量入口，字节选择让火山引擎而非抖音上春晚，表明其 ToB 战略的决心。这将是 AI 技术最大规模的 C 端曝光，对于 AI 普及有重要意义。业内分析认为，字节正在将火山引擎打造为「豆包同款」的企业级 AI 基础设施品牌。</p>
+        </div>
+        <a href="https://mp.weixin.qq.com" target="_blank" class="source-link">极客公园 / 硅星人Pro / 阑夕</a>
+      </article>
+
+      <article class="news-card top-5">
+        <h3><span class="rank">5</span>Resolve AI 达成 $10 亿估值<span class="date">12-19</span></h3>
+        <p class="summary">前 Splunk 高管创办的 Resolve AI 在 A 轮融资中达成 10 亿美元估值，专注于 AI 驱动的 IT 运维自动化。</p>
+        <div class="editor-comment">
+          <div class="label">编辑点评</div>
+          <p>AI 在企业 IT 运维领域的应用正在快速成熟。Resolve AI 的高估值反映了市场对 AI Agent 在 B 端落地的信心。运维自动化是 AI Agent 最先实现价值的场景之一，因为它有明确的 ROI 衡量标准。</p>
+        </div>
+        <a href="https://techcrunch.com" target="_blank" class="source-link">TechCrunch</a>
+      </article>
+
+      <article class="news-card">
+        <h3><span class="rank">6</span>深势科技完成 8 亿元融资<span class="date">12-24</span></h3>
+        <p class="summary">被称为「中国版 DeepMind」的深势科技完成新一轮融资，专注 AI for Science 领域，其 Uni-Mol 分子预训练模型在制药、材料科学等领域有广泛应用。</p>
+        <a href="https://mp.weixin.qq.com" target="_blank" class="source-link">暗涌Waves</a>
+      </article>
+
+      <article class="news-card">
+        <h3><span class="rank">7</span>ChatGPT 推出年度回顾功能<span class="date">12-22</span></h3>
+        <p class="summary">OpenAI 为 ChatGPT 推出类似 Spotify Wrapped 的年度使用回顾功能，展示用户全年对话数据和使用习惯洞察。</p>
+        <a href="https://techcrunch.com" target="_blank" class="source-link">TechCrunch</a>
+      </article>
+
+      <article class="news-card">
+        <h3><span class="rank">8</span>纽约州签署 RAISE 法案，建立 AI 安全监管<span class="date">12-20</span></h3>
+        <p class="summary">纽约州州长 Hochul 签署 RAISE 法案，成为美国 AI 监管的重要里程碑，为其他州的 AI 立法提供参考范本。</p>
+        <a href="https://techcrunch.com" target="_blank" class="source-link">TechCrunch</a>
+      </article>
+
+      <article class="news-card">
+        <h3><span class="rank">9</span>字节 TRAE：一年 200 次更新，600 万开发者<span class="date">12-29</span></h3>
+        <p class="summary">AI Coding 下半场开启，字节的 TRAE 成为 AI 编程助手黑马，不拼参数，拼谁能让开发者「戒不掉」。</p>
+        <a href="https://mp.weixin.qq.com" target="_blank" class="source-link">极客公园 / 硅星人Pro</a>
+      </article>
+
+      <article class="news-card">
+        <h3><span class="rank">10</span>Waymo 测试 Gemini 作为车内 AI 助手<span class="date">12-24</span></h3>
+        <p class="summary">Waymo 正在其自动驾驶出租车中测试 Google Gemini 作为车内 AI 助手，探索 AI 在出行场景的应用。</p>
+        <a href="https://techcrunch.com" target="_blank" class="source-link">TechCrunch</a>
+      </article>
+    </section>
+
+    <!-- LLM News -->
+    <section class="section">
+      <h2 class="section-title"><span class="icon">LLM</span> 大模型动态</h2>
+
+      <article class="news-card">
+        <h3>OpenAI 寻求新的 Preparedness 负责人<span class="date">12-28</span></h3>
+        <p class="summary">OpenAI 正在招聘新的 Preparedness 团队负责人，该团队负责评估模型安全风险。此举表明 OpenAI 在加强 AI 安全方面的投入。</p>
+      </article>
+
+      <article class="news-card">
+        <h3>ChatGPT 支持调节回复热情程度<span class="date">12-20</span></h3>
+        <p class="summary">OpenAI 允许用户直接调节 ChatGPT 的回复风格和热情程度，提供更个性化的对话体验。</p>
+      </article>
+
+      <article class="news-card">
+        <h3>Anthropic CPO 透露 2026 目标<span class="date">12-28</span></h3>
+        <p class="summary">Anthropic 首席产品官表示，2026年的重点不是让大模型「更聪明」，而是让 AI 可靠地完成工作任务，终结「公司上 AI，员工更累」的尴尬局面。</p>
+      </article>
+
+      <article class="news-card">
+        <h3>Amazon Alexa+ 扩展第三方集成<span class="date">12-23</span></h3>
+        <p class="summary">Amazon 的 AI 助手 Alexa+ 现已支持与 Angi、Expedia、Square、Yelp 等应用集成，拓展语音 AI 生态系统。</p>
+      </article>
+    </section>
+
+    <!-- GitHub Trending -->
+    <section class="section">
+      <h2 class="section-title"><span class="icon">GH</span> GitHub 热门项目</h2>
+
+      <div class="github-grid">
+        <article class="github-card">
+          <h4>opencode</h4>
+          <p>开源 AI 编程助手，43,927 Stars</p>
+          <span class="lang">TypeScript</span>
+        </article>
+
+        <article class="github-card">
+          <h4>ai-hedge-fund</h4>
+          <p>AI 对冲基金团队框架，44,262 Stars</p>
+          <span class="lang">Python</span>
+        </article>
+
+        <article class="github-card">
+          <h4>exo</h4>
+          <p>用日常设备搭建 AI 集群，38,926 Stars</p>
+          <span class="lang">Python</span>
+        </article>
+
+        <article class="github-card">
+          <h4>anthropics/skills</h4>
+          <p>Claude Agent 技能公共仓库，29,543 Stars</p>
+          <span class="lang">Python</span>
+        </article>
+
+        <article class="github-card">
+          <h4>sim</h4>
+          <p>AI Agent 工作流开源平台，24,670 Stars</p>
+          <span class="lang">TypeScript</span>
+        </article>
+
+        <article class="github-card">
+          <h4>chatterbox</h4>
+          <p>最先进开源 TTS 语音合成，19,289 Stars</p>
+          <span class="lang">Python</span>
+        </article>
+
+        <article class="github-card">
+          <h4>hello-agents</h4>
+          <p>从零开始构建智能体教程，13,298 Stars</p>
+          <span class="lang">Python</span>
+        </article>
+
+        <article class="github-card">
+          <h4>claude-quickstarts</h4>
+          <p>Claude API 快速入门项目集，12,997 Stars</p>
+          <span class="lang">Python</span>
+        </article>
+      </div>
+    </section>
+
+    <!-- HuggingFace Models -->
+    <section class="section">
+      <h2 class="section-title"><span class="icon">HF</span> Hugging Face 热门模型</h2>
+
+      <table class="funding-table">
+        <thead>
+          <tr>
+            <th>排名</th>
+            <th>模型</th>
+            <th>作者</th>
+            <th>任务类型</th>
+            <th>下载量</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td><strong>GLM-4.7</strong></td>
+            <td>zai-org</td>
+            <td>文本生成</td>
+            <td>28.6K</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td><strong>MiniMax-M2.1</strong></td>
+            <td>MiniMaxAI</td>
+            <td>文本生成</td>
+            <td>59.9K</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td><strong>Qwen-Image-Edit</strong></td>
+            <td>Qwen</td>
+            <td>图像编辑</td>
+            <td>19.6K</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td><strong>Z-Image-Turbo</strong></td>
+            <td>Tongyi-MAI</td>
+            <td>文生图</td>
+            <td>398K</td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td><strong>functiongemma-270m</strong></td>
+            <td>Google</td>
+            <td>函数调用</td>
+            <td>36.6K</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- OpenRouter Rankings -->
+    <section class="section">
+      <h2 class="section-title"><span class="icon">API</span> OpenRouter 模型使用排行</h2>
+
+      <div class="openrouter-ranking">
+        <div class="rank-item">
+          <span class="rank-num">1</span>
+          <span class="model-name">Grok Code Fast 1</span>
+          <span class="provider">X AI</span>
+        </div>
+        <div class="rank-item">
+          <span class="rank-num">2</span>
+          <span class="model-name">Gemini 2.5 Flash</span>
+          <span class="provider">Google</span>
+        </div>
+        <div class="rank-item">
+          <span class="rank-num">3</span>
+          <span class="model-name">Claude 4.5 Sonnet</span>
+          <span class="provider">Anthropic</span>
+        </div>
+        <div class="rank-item">
+          <span class="rank-num">4</span>
+          <span class="model-name">GPT-OSS-120B</span>
+          <span class="provider">OpenAI</span>
+        </div>
+        <div class="rank-item">
+          <span class="rank-num">5</span>
+          <span class="model-name">Claude 4.5 Opus</span>
+          <span class="provider">Anthropic</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- AI Apps -->
+    <section class="section">
+      <h2 class="section-title"><span class="icon">APP</span> AI 应用与产品</h2>
+
+      <article class="news-card">
+        <h3>腾讯云 AI Agent 沙箱<span class="date">12-26</span></h3>
+        <p class="summary"><strong>类型：</strong>AI Agent 基础设施<br><strong>亮点：</strong>100 毫秒沙箱打通 AI Agent 落地最后一公里<br><strong>解决：</strong>Agent 执行代码的安全和性能问题</p>
+      </article>
+
+      <article class="news-card">
+        <h3>Claude Code 实战课程<span class="date">12-26</span></h3>
+        <p class="summary"><strong>类型：</strong>AI 编程教育<br><strong>亮点：</strong>来自 Anthropic 官方的 CLI 工具实战教程</p>
+      </article>
+
+      <article class="news-card">
+        <h3>Second Me v1.1<span class="date">12-29</span></h3>
+        <p class="summary"><strong>类型：</strong>个人 AI 分身<br><strong>亮点：</strong>让 AI 代替你进行初步沟通和信息筛选</p>
+      </article>
+
+      <article class="news-card">
+        <h3>Orion 隐私浏览器<span class="date">12-29</span></h3>
+        <p class="summary"><strong>类型：</strong>隐私工具<br><strong>亮点：</strong>零遥测、零广告、防范 AI 追踪的新型浏览器</p>
+      </article>
+    </section>
+
+    <!-- Funding -->
+    <section class="section">
+      <h2 class="section-title"><span class="icon">$</span> 本月投融资</h2>
+
+      <table class="funding-table">
+        <thead>
+          <tr>
+            <th>日期</th>
+            <th>公司</th>
+            <th>领域</th>
+            <th>轮次</th>
+            <th>金额</th>
+            <th>投资方</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>12-30</td>
+            <td><strong>Manus</strong></td>
+            <td>AI Agent</td>
+            <td>收购</td>
+            <td>$50亿+</td>
+            <td>Meta</td>
+          </tr>
+          <tr>
+            <td>12-24</td>
+            <td><strong>Groq</strong></td>
+            <td>AI 芯片</td>
+            <td>授权+收购</td>
+            <td>$200亿</td>
+            <td>Nvidia</td>
+          </tr>
+          <tr>
+            <td>12-19</td>
+            <td><strong>LeCun World Model</strong></td>
+            <td>世界模型</td>
+            <td>创立</td>
+            <td>估值$50亿+</td>
+            <td>-</td>
+          </tr>
+          <tr>
+            <td>12-19</td>
+            <td><strong>Resolve AI</strong></td>
+            <td>IT 运维</td>
+            <td>A轮</td>
+            <td>估值$10亿</td>
+            <td>-</td>
+          </tr>
+          <tr>
+            <td>12-24</td>
+            <td><strong>深势科技</strong></td>
+            <td>AI for Science</td>
+            <td>-</td>
+            <td>¥8亿</td>
+            <td>-</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="funding-total">
+        <div class="amount">$310 亿+</div>
+        <div class="label">本月融资/并购总额</div>
+      </div>
+
+      <div class="chart-container">
+        <h4>本月融资分布</h4>
+        <canvas id="fundingChart" height="200"></canvas>
+      </div>
+    </section>
+
+    <!-- Trend Analysis -->
+    <section class="section">
+      <h2 class="section-title"><span class="icon">TREND</span> 12月趋势解读</h2>
+
+      <div class="trend-card">
+        <h3>AI 行业五大趋势</h3>
+        <ul>
+          <li><strong>大整合时代来临</strong>：Meta 收购 Manus、Nvidia 授权 Groq 技术、LeCun 创业获 $50 亿估值，行业进入并购整合期，巨头通过收购快速补齐短板</li>
+          <li><strong>AI Agent 成为主战场</strong>：从「能对话」到「能干活」，执行力成为核心竞争力。Manus 被高价收购、腾讯云推出 Agent 沙箱、GitHub 涌现大量 Agent 框架</li>
+          <li><strong>可靠性优先于智能</strong>：Anthropic 明确 2026 目标是让 AI 可靠完成任务，而非更聪明。行业从「Demo 驱动」转向「生产力驱动」</li>
+          <li><strong>开源生态爆发</strong>：opencode、sim、exo 等开源项目获得大量关注，AI 开发工具链日趋成熟，降低了 AI Agent 开发门槛</li>
+          <li><strong>AI 安全监管加速</strong>：纽约州 RAISE 法案签署，OpenAI 招聘安全负责人，AI 安全从技术讨论进入政策实施阶段</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Hot Tags -->
+    <section class="section">
+      <h2 class="section-title"><span class="icon">TAG</span> 本月热点词云</h2>
+      <div class="tag-cloud">
+        <span class="tag hot">Meta 收购</span>
+        <span class="tag hot">AI Agent</span>
+        <span class="tag hot">Manus</span>
+        <span class="tag hot">Nvidia</span>
+        <span class="tag warm">Groq</span>
+        <span class="tag warm">世界模型</span>
+        <span class="tag warm">春晚</span>
+        <span class="tag warm">LeCun</span>
+        <span class="tag normal">Claude Code</span>
+        <span class="tag normal">TRAE</span>
+        <span class="tag normal">opencode</span>
+        <span class="tag">深势科技</span>
+        <span class="tag">火山引擎</span>
+        <span class="tag">AI 安全</span>
+        <span class="tag">可靠性</span>
+        <span class="tag">Resolve AI</span>
+      </div>
+    </section>
+
+    <!-- Reading List -->
+    <section class="section">
+      <h2 class="section-title"><span class="icon">LINK</span> 延伸阅读</h2>
+      <ul class="reading-list">
+        <li>
+          <a href="https://mp.weixin.qq.com" target="_blank">Andrej Karpathy：一场里氏 9 级的大地震正在重塑整个编程行业</a>
+          <div class="source">MacTalk - 深度分析</div>
+        </li>
+        <li>
+          <a href="https://mp.weixin.qq.com" target="_blank">2025 消费级 AI 现状报告：产品亮点、遗憾与未来趋势</a>
+          <div class="source">硅星人Pro - 年度盘点</div>
+        </li>
+        <li>
+          <a href="https://mp.weixin.qq.com" target="_blank">一个强化学习信仰者的十年</a>
+          <div class="source">甲子光年 - 人物专访</div>
+        </li>
+        <li>
+          <a href="https://mp.weixin.qq.com" target="_blank">你的 AI 会救你吗？19 个大模型实测揭秘</a>
+          <div class="source">硅星人Pro - 测评</div>
+        </li>
+        <li>
+          <a href="https://mp.weixin.qq.com" target="_blank">钱去哪了？谁在出手？与刘旌复盘 2025 VC 们的新共识与暗流</a>
+          <div class="source">十字路口Crossing - 投资解读</div>
+        </li>
+        <li>
+          <a href="https://mp.weixin.qq.com" target="_blank">深势科技 8 亿融资背后：从科研作坊到中国版 DeepMind</a>
+          <div class="source">暗涌Waves - 投资解读</div>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>本月报由 AI 自动生成，内容仅供参考</p>
+      <p class="sources">数据来源：极客公园、InfoQ、硅星人Pro、甲子光年、MacTalk、暗涌Waves、十字路口Crossing、阑夕、TechCrunch、GitHub、Hugging Face、OpenRouter</p>
+    </footer>
+  </div>
+
+  <script>
+    function toggleTheme() {
+      const html = document.documentElement;
+      const btn = document.querySelector('.theme-toggle');
+      if (html.dataset.theme === 'dark') {
+        html.dataset.theme = 'light';
+        btn.textContent = 'Light';
+      } else {
+        html.dataset.theme = 'dark';
+        btn.textContent = 'Dark';
+      }
+      localStorage.setItem('theme', html.dataset.theme);
+    }
+
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+      document.documentElement.dataset.theme = savedTheme;
+      document.querySelector('.theme-toggle').textContent = savedTheme === 'dark' ? 'Dark' : 'Light';
+    } else {
+      document.querySelector('.theme-toggle').textContent = 'Dark';
+    }
+
+    const ctx = document.getElementById('fundingChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'doughnut',
+      data: {
+        labels: ['Manus (Meta)', 'Groq (Nvidia)', 'LeCun 估值', 'Resolve AI', '深势科技'],
+        datasets: [{
+          data: [50, 200, 50, 10, 1.1],
+          backgroundColor: ['#f85149', '#db6d28', '#a371f7', '#58a6ff', '#3fb950'],
+          borderWidth: 0
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            position: 'bottom',
+            labels: {
+              color: getComputedStyle(document.documentElement).getPropertyValue('--text-secondary'),
+              padding: 20
+            }
+          },
+          tooltip: {
+            callbacks: {
+              label: function(context) {
+                return context.label + ': $' + context.raw + '亿';
+              }
+            }
+          }
+        }
+      }
+    });
+  </script>
+
+  <style>
+    .github-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .github-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem;
+    }
+    .github-card h4 {
+      color: var(--accent);
+      margin: 0 0 0.5rem 0;
+      font-size: 0.95rem;
+    }
+    .github-card p {
+      color: var(--text-secondary);
+      font-size: 0.85rem;
+      margin: 0 0 0.5rem 0;
+    }
+    .github-card .lang {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      background: var(--bg);
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+    .openrouter-ranking {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .rank-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.75rem 1rem;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+    }
+    .rank-num {
+      width: 24px;
+      height: 24px;
+      background: var(--accent);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      font-weight: bold;
+    }
+    .model-name {
+      flex: 1;
+      font-weight: 500;
+    }
+    .provider {
+      color: var(--text-secondary);
+      font-size: 0.85rem;
+    }
+  </style>
+</body>
+</html>

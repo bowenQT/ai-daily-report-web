@@ -1,0 +1,20 @@
+{
+  "version": 2,
+  "name": "ai-daily-report",
+  "builds": [
+    {
+      "src": "**/*.html",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "assets/**/*",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/latest",
+      "dest": "/reports/2025-12-30.html"
+    }
+  ]
+}

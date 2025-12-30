@@ -1,0 +1,9 @@
+{
+  "name": "ai-daily-report",
+  "version": "1.0.0",
+  "description": "AI 行业资讯快报网站",
+  "scripts": {
+    "dev": "npx serve .",
+    "build": "echo 'Static site, no build needed'"
+  }
+}

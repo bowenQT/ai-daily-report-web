@@ -521,6 +521,38 @@
       padding-top: 0;
     }
 
+    /* 大屏幕：趋势分析两列布局 */
+    @media (min-width: 1024px) {
+      .trend-card ul {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem 2.5rem;
+        align-items: start;
+      }
+
+      .trend-card li {
+        display: block;
+        padding: 0;
+        border-bottom: none;
+      }
+
+      .trend-card li::before {
+        content: none;
+      }
+
+      .trend-card li strong {
+        display: block;
+        margin-bottom: 0.5rem;
+      }
+
+      .trend-card li .keywords {
+        display: block;
+        margin-left: 0;
+        margin-bottom: 0.75rem;
+        width: fit-content;
+      }
+    }
+
     /* 平滑滚动 */
     html {
       scroll-behavior: smooth;
@@ -532,6 +564,52 @@
     .hf-card:nth-child(3) { animation-delay: 0.15s; }
     .hf-card:nth-child(4) { animation-delay: 0.2s; }
     .hf-card:nth-child(5) { animation-delay: 0.25s; }
+
+    /* 外部链接图标样式 */
+    .external-link-icon {
+      display: inline-block;
+      font-size: 0.85em;
+      opacity: 0.6;
+      transition: all 0.2s;
+      margin-left: 0.25rem;
+      vertical-align: middle;
+    }
+
+    .github-card h4 a:hover .external-link-icon,
+    .hf-card-title a:hover .external-link-icon {
+      opacity: 1;
+      transform: translateX(2px) translateY(-2px);
+    }
+
+    /* 查看原文样式优化 */
+    .source-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .source-link .link-text {
+      transition: all 0.2s;
+    }
+
+    .source-link .link-action {
+      color: var(--accent-blue);
+      font-weight: 600;
+      font-size: 0.9em;
+    }
+
+    .source-link:hover .link-action {
+      text-decoration: underline;
+    }
+
+    .source-link .arrow-icon {
+      font-size: 0.9em;
+      transition: transform 0.2s;
+    }
+
+    .source-link:hover .arrow-icon {
+      transform: translateX(3px);
+    }
   </style>
 </head>
 <body>
@@ -581,7 +659,11 @@
                 <p>中国AI公司抢在OpenAI和Anthropic之前登陆资本市场，标志着中美AI竞赛进入新阶段。尽管智谱2025上半年亏损23.6亿元，但市场对AI基础设施的长期价值给予了高估值。这也反映出中国AI产业在美国芯片限制下寻求资本市场支持以实现技术独立的战略。</p>
             </div>
             
-            <a href="https://finance.sina.cn/stock/ssgs/2025-12-30/detail-inheqcrt5801721.d.html" class="source-link" target="_blank" rel="noopener noreferrer">新浪财经</a>
+            <a href="https://finance.sina.cn/stock/ssgs/2025-12-30/detail-inheqcrt5801721.d.html" class="source-link" target="_blank" rel="noopener noreferrer">
+                <span class="link-text">新浪财经</span>
+                <span class="link-action">查看原文</span>
+                <span class="arrow-icon">→</span>
+            </a>
         </article>
         
         <article class="news-card top-2">
@@ -594,7 +676,11 @@
                 <p>智谱和MiniMax同周启动IPO并非巧合，而是中国AI产业集体冲刺资本市场的信号。两家公司的竞争将为投资者提供对比标的，也可能推动AI企业估值理性化。阿里和主权基金的参与显示机构投资者对中国AI长期价值的认可，但也需警惕过度竞争导致的估值虚高。</p>
             </div>
             
-            <a href="https://www.qbitai.com/2025/12/366302.html" class="source-link" target="_blank" rel="noopener noreferrer">量子位</a>
+            <a href="https://www.qbitai.com/2025/12/366302.html" class="source-link" target="_blank" rel="noopener noreferrer">
+                <span class="link-text">量子位</span>
+                <span class="link-action">查看原文</span>
+                <span class="arrow-icon">→</span>
+            </a>
         </article>
         
         <article class="news-card top-3">
@@ -607,7 +693,11 @@
                 <p>SoftBank创始人孙正义对AI的豪赌达到新高度。410亿美元的投资规模不仅展示了对OpenAI的信心，也反映出AI已成为全球科技投资的核心。OpenAI估值从3000亿飙升至5000亿美元，显示二级市场对AI前景的狂热。但如此高估值也引发泡沫担忧，OpenAI需要证明其商业化能力匹配估值。</p>
             </div>
             
-            <a href="https://www.reuters.com/business/media-telecom/softbank-has-fully-funded-its-40-billion-investment-openai-cnbc-reports-2025-12-30/" class="source-link" target="_blank" rel="noopener noreferrer">Reuters</a>
+            <a href="https://www.reuters.com/business/media-telecom/softbank-has-fully-funded-its-40-billion-investment-openai-cnbc-reports-2025-12-30/" class="source-link" target="_blank" rel="noopener noreferrer">
+                <span class="link-text">Reuters</span>
+                <span class="link-action">查看原文</span>
+                <span class="arrow-icon">→</span>
+            </a>
         </article>
         
         <article class="news-card top-4">
@@ -620,7 +710,11 @@
                 <p>这是2025年最重要的AI并购案之一，标志着大科技公司从基础模型转向应用层的战略转移。Meta通过收购直接获得了成熟的订阅用户基础和企业级AI能力，缩短了产品上市时间。此举也反映出AI领域的整合加速，以及对已验证商业模式的高溢价追逐。</p>
             </div>
             
-            <a href="https://www.cnbc.com/2025/12/30/meta-acquires-singapore-ai-agent-firm-manus.html" class="source-link" target="_blank" rel="noopener noreferrer">CNBC</a>
+            <a href="https://www.cnbc.com/2025/12/30/meta-acquires-singapore-ai-agent-firm-manus.html" class="source-link" target="_blank" rel="noopener noreferrer">
+                <span class="link-text">CNBC</span>
+                <span class="link-action">查看原文</span>
+                <span class="arrow-icon">→</span>
+            </a>
         </article>
         
         <article class="news-card top-5">
@@ -633,7 +727,11 @@
                 <p>Qwen-Image-Edit的持续迭代展示了阿里在多模态AI领域的技术积累。相比闭源的图像编辑工具，开源策略能快速获得开发者反馈并构建生态。'角色一致性'的突破解决了AI图像编辑的核心痛点，这对电商、摄影等行业有实际应用价值。</p>
             </div>
             
-            <a href="https://www.ithome.com/0/907/951.htm" class="source-link" target="_blank" rel="noopener noreferrer">IT之家</a>
+            <a href="https://www.ithome.com/0/907/951.htm" class="source-link" target="_blank" rel="noopener noreferrer">
+                <span class="link-text">IT之家</span>
+                <span class="link-action">查看原文</span>
+                <span class="arrow-icon">→</span>
+            </a>
         </article>
         
         <article class="news-card ">
@@ -646,7 +744,11 @@
                 <p>Qwen Code从命令行工具向完整开发生态演进，标志着国产AI编程工具正从'能用'迈向'好用'。对标GitHub Copilot和Cursor，Qwen Code更聚焦中文开发者习惯与本土技术栈适配。多模型支持显示开源AI编程工具的灵活性优势。</p>
             </div>
             
-            <a href="https://www.aitop100.cn/infomation/details/33031.html" class="source-link" target="_blank" rel="noopener noreferrer">AI Top 100</a>
+            <a href="https://www.aitop100.cn/infomation/details/33031.html" class="source-link" target="_blank" rel="noopener noreferrer">
+                <span class="link-text">AI Top 100</span>
+                <span class="link-action">查看原文</span>
+                <span class="arrow-icon">→</span>
+            </a>
         </article>
         
         <article class="news-card ">
@@ -659,7 +761,11 @@
                 <p>DeepSeek的成功是中国开源AI路线的又一次验证。在美国芯片限制下，中国通过更高效的训练方法和开源策略实现了技术突破。DeepSeek的低成本优势(相比OpenAI数千万美元的训练成本)和开放性吸引了全球研究者，这可能迫使OpenAI等闭源公司重新考虑商业模式。</p>
             </div>
             
-            <a href="https://www.nature.com/articles/d41586-025-00259-0" class="source-link" target="_blank" rel="noopener noreferrer">Nature</a>
+            <a href="https://www.nature.com/articles/d41586-025-00259-0" class="source-link" target="_blank" rel="noopener noreferrer">
+                <span class="link-text">Nature</span>
+                <span class="link-action">查看原文</span>
+                <span class="arrow-icon">→</span>
+            </a>
         </article>
         
         <article class="news-card ">
@@ -672,7 +778,11 @@
                 <p>1500亿美元的融资规模相当惊人，但也引发了AI泡沫的担忧。这种'囤粮过冬'的策略反映出业内对未来市场不确定性的预判。OpenAI 410亿、Anthropic 130亿、Meta对Scale AI的140亿投资等超大规模融资推高了整体数字，但也暴露出行业对持续烧钱的担忧。</p>
             </div>
             
-            <a href="https://www.pymnts.com/artificial-intelligence-2/2025/silicon-valley-ai-startups-raise-record-150-billion-2025/" class="source-link" target="_blank" rel="noopener noreferrer">PYMNTS</a>
+            <a href="https://www.pymnts.com/artificial-intelligence-2/2025/silicon-valley-ai-startups-raise-record-150-billion-2025/" class="source-link" target="_blank" rel="noopener noreferrer">
+                <span class="link-text">PYMNTS</span>
+                <span class="link-action">查看原文</span>
+                <span class="arrow-icon">→</span>
+            </a>
         </article>
         
         <article class="news-card ">
@@ -685,7 +795,11 @@
                 <p>Nature的呼吁反映出科学界对AI安全治理紧迫性的共识。当前AI监管呈现明显的地区不平衡：欧盟严格立法、中国快速跟进、美国相对宽松。这种不平衡可能导致监管套利和安全风险。2026年能否形成全球AI安全共识，将决定AI技术的长期发展轨迹。</p>
             </div>
             
-            <a href="https://www.nature.com/articles/d41586-025-04106-0" class="source-link" target="_blank" rel="noopener noreferrer">Nature</a>
+            <a href="https://www.nature.com/articles/d41586-025-04106-0" class="source-link" target="_blank" rel="noopener noreferrer">
+                <span class="link-text">Nature</span>
+                <span class="link-action">查看原文</span>
+                <span class="arrow-icon">→</span>
+            </a>
         </article>
         
         <article class="news-card ">
@@ -698,7 +812,11 @@
                 <p>韩国作为全球存储芯片和AI硬件的重要供应商，直接受益于全球AI基础设施建设热潮。这也验证了'AI淘金时代，卖铲子的人先赚钱'的逻辑——相比烧钱的大模型公司，为AI提供芯片、数据中心等基础设施的企业率先实现了资本市场的价值兑现。</p>
             </div>
             
-            <a href="https://www.bloomberg.com/news/articles/2025-12-29/korean-stocks-best-year-since-1999" class="source-link" target="_blank" rel="noopener noreferrer">Bloomberg</a>
+            <a href="https://www.bloomberg.com/news/articles/2025-12-29/korean-stocks-best-year-since-1999" class="source-link" target="_blank" rel="noopener noreferrer">
+                <span class="link-text">Bloomberg</span>
+                <span class="link-action">查看原文</span>
+                <span class="arrow-icon">→</span>
+            </a>
         </article>
         
     </section>
@@ -710,7 +828,7 @@
       <div class="github-grid">
         
         <article class="github-card">
-            <h4><a href="https://github.com/anthropics/skills" target="_blank" rel="noopener noreferrer">anthropics/skills</a></h4>
+            <h4><a href="https://github.com/anthropics/skills" target="_blank" rel="noopener noreferrer">anthropics/skills <span class="external-link-icon">↗</span></a></h4>
             <p>Skills for Claude - extend Claude's capabilities with custom tools</p>
             <div class="meta-row">
                 <span class="category-tag">LLM</span>
@@ -720,7 +838,7 @@
         </article>
         
         <article class="github-card">
-            <h4><a href="https://github.com/sst/opencode" target="_blank" rel="noopener noreferrer">sst/opencode</a></h4>
+            <h4><a href="https://github.com/sst/opencode" target="_blank" rel="noopener noreferrer">sst/opencode <span class="external-link-icon">↗</span></a></h4>
             <p>Open source alternative to GitHub Copilot - AI coding assistant</p>
             <div class="meta-row">
                 <span class="category-tag">AI编程</span>
@@ -730,7 +848,7 @@
         </article>
         
         <article class="github-card">
-            <h4><a href="https://github.com/exo-explore/exo" target="_blank" rel="noopener noreferrer">exo-explore/exo</a></h4>
+            <h4><a href="https://github.com/exo-explore/exo" target="_blank" rel="noopener noreferrer">exo-explore/exo <span class="external-link-icon">↗</span></a></h4>
             <p>Run your own AI cluster at home with everyday devices</p>
             <div class="meta-row">
                 <span class="category-tag">分布式AI</span>
@@ -740,7 +858,7 @@
         </article>
         
         <article class="github-card">
-            <h4><a href="https://github.com/resemble-ai/chatterbox" target="_blank" rel="noopener noreferrer">resemble-ai/chatterbox</a></h4>
+            <h4><a href="https://github.com/resemble-ai/chatterbox" target="_blank" rel="noopener noreferrer">resemble-ai/chatterbox <span class="external-link-icon">↗</span></a></h4>
             <p>Open source voice cloning and speech synthesis</p>
             <div class="meta-row">
                 <span class="category-tag">语音AI</span>
@@ -750,7 +868,7 @@
         </article>
         
         <article class="github-card">
-            <h4><a href="https://github.com/danny-avila/LibreChat" target="_blank" rel="noopener noreferrer">danny-avila/LibreChat</a></h4>
+            <h4><a href="https://github.com/danny-avila/LibreChat" target="_blank" rel="noopener noreferrer">danny-avila/LibreChat <span class="external-link-icon">↗</span></a></h4>
             <p>Enhanced ChatGPT Clone with multiple AI providers support</p>
             <div class="meta-row">
                 <span class="category-tag">聊天应用</span>
@@ -760,7 +878,7 @@
         </article>
         
         <article class="github-card">
-            <h4><a href="https://github.com/princeton-nlp/SWE-agent" target="_blank" rel="noopener noreferrer">princeton-nlp/SWE-agent</a></h4>
+            <h4><a href="https://github.com/princeton-nlp/SWE-agent" target="_blank" rel="noopener noreferrer">princeton-nlp/SWE-agent <span class="external-link-icon">↗</span></a></h4>
             <p>AI agent for automating software engineering tasks</p>
             <div class="meta-row">
                 <span class="category-tag">AI Agent</span>
@@ -770,7 +888,7 @@
         </article>
         
         <article class="github-card">
-            <h4><a href="https://github.com/maybe-finance/maybe" target="_blank" rel="noopener noreferrer">maybe-finance/maybe</a></h4>
+            <h4><a href="https://github.com/maybe-finance/maybe" target="_blank" rel="noopener noreferrer">maybe-finance/maybe <span class="external-link-icon">↗</span></a></h4>
             <p>Open source personal finance app with AI insights</p>
             <div class="meta-row">
                 <span class="category-tag">金融科技</span>
@@ -780,7 +898,7 @@
         </article>
         
         <article class="github-card">
-            <h4><a href="https://github.com/OpenBMB/MiniCPM" target="_blank" rel="noopener noreferrer">OpenBMB/MiniCPM</a></h4>
+            <h4><a href="https://github.com/OpenBMB/MiniCPM" target="_blank" rel="noopener noreferrer">OpenBMB/MiniCPM <span class="external-link-icon">↗</span></a></h4>
             <p>Efficient and powerful multimodal LLM series from OpenBMB</p>
             <div class="meta-row">
                 <span class="category-tag">多模态</span>
@@ -790,7 +908,7 @@
         </article>
         
         <article class="github-card">
-            <h4><a href="https://github.com/mudler/LocalAI" target="_blank" rel="noopener noreferrer">mudler/LocalAI</a></h4>
+            <h4><a href="https://github.com/mudler/LocalAI" target="_blank" rel="noopener noreferrer">mudler/LocalAI <span class="external-link-icon">↗</span></a></h4>
             <p>Self-hosted OpenAI-compatible API for local models</p>
             <div class="meta-row">
                 <span class="category-tag">本地部署</span>
@@ -800,7 +918,7 @@
         </article>
         
         <article class="github-card">
-            <h4><a href="https://github.com/microsoft/semantic-kernel" target="_blank" rel="noopener noreferrer">microsoft/semantic-kernel</a></h4>
+            <h4><a href="https://github.com/microsoft/semantic-kernel" target="_blank" rel="noopener noreferrer">microsoft/semantic-kernel <span class="external-link-icon">↗</span></a></h4>
             <p>Integrate LLMs like OpenAI, Azure OpenAI, and Hugging Face into apps</p>
             <div class="meta-row">
                 <span class="category-tag">开发框架</span>
@@ -822,7 +940,7 @@
             <div class="hf-card-header">
                 <span class="hf-card-icon">🎨</span>
                 <div class="hf-card-title">
-                    <a href="https://huggingface.co/Tongyi-MAI/Z-Image-Turbo" target="_blank" rel="noopener noreferrer">Tongyi-MAI/Z-Image-Turbo</a>
+                    <a href="https://huggingface.co/Tongyi-MAI/Z-Image-Turbo" target="_blank" rel="noopener noreferrer">Tongyi-MAI/Z-Image-Turbo <span class="external-link-icon">↗</span></a>
                     <div class="hf-card-type">text-to-image</div>
                 </div>
             </div>
@@ -837,7 +955,7 @@
             <div class="hf-card-header">
                 <span class="hf-card-icon">✂️</span>
                 <div class="hf-card-title">
-                    <a href="https://huggingface.co/facebook/sam3" target="_blank" rel="noopener noreferrer">facebook/sam3</a>
+                    <a href="https://huggingface.co/facebook/sam3" target="_blank" rel="noopener noreferrer">facebook/sam3 <span class="external-link-icon">↗</span></a>
                     <div class="hf-card-type">mask-generation</div>
                 </div>
             </div>
@@ -852,7 +970,7 @@
             <div class="hf-card-header">
                 <span class="hf-card-icon">📝</span>
                 <div class="hf-card-title">
-                    <a href="https://huggingface.co/MiniMaxAI/MiniMax-M2.1" target="_blank" rel="noopener noreferrer">MiniMaxAI/MiniMax-M2.1</a>
+                    <a href="https://huggingface.co/MiniMaxAI/MiniMax-M2.1" target="_blank" rel="noopener noreferrer">MiniMaxAI/MiniMax-M2.1 <span class="external-link-icon">↗</span></a>
                     <div class="hf-card-type">text-generation</div>
                 </div>
             </div>
@@ -867,7 +985,7 @@
             <div class="hf-card-header">
                 <span class="hf-card-icon">🎨</span>
                 <div class="hf-card-title">
-                    <a href="https://huggingface.co/unsloth/Qwen-Image-Edit-2511-GGUF" target="_blank" rel="noopener noreferrer">unsloth/Qwen-Image-Edit-2511-GGUF</a>
+                    <a href="https://huggingface.co/unsloth/Qwen-Image-Edit-2511-GGUF" target="_blank" rel="noopener noreferrer">unsloth/Qwen-Image-Edit-2511-GGUF <span class="external-link-icon">↗</span></a>
                     <div class="hf-card-type">image-to-image</div>
                 </div>
             </div>
@@ -882,7 +1000,7 @@
             <div class="hf-card-header">
                 <span class="hf-card-icon">🎨</span>
                 <div class="hf-card-title">
-                    <a href="https://huggingface.co/lightx2v/Qwen-Image-Edit-2511-Lightning" target="_blank" rel="noopener noreferrer">lightx2v/Qwen-Image-Edit-2511-Lightning</a>
+                    <a href="https://huggingface.co/lightx2v/Qwen-Image-Edit-2511-Lightning" target="_blank" rel="noopener noreferrer">lightx2v/Qwen-Image-Edit-2511-Lightning <span class="external-link-icon">↗</span></a>
                     <div class="hf-card-type">image-to-image</div>
                 </div>
             </div>
@@ -897,7 +1015,7 @@
             <div class="hf-card-header">
                 <span class="hf-card-icon">🎨</span>
                 <div class="hf-card-title">
-                    <a href="https://huggingface.co/alibaba-pai/Z-Image-Turbo-Fun-Controlnet-Union-2.1" target="_blank" rel="noopener noreferrer">alibaba-pai/Z-Image-Turbo-Fun-Controlnet-Union-2.1</a>
+                    <a href="https://huggingface.co/alibaba-pai/Z-Image-Turbo-Fun-Controlnet-Union-2.1" target="_blank" rel="noopener noreferrer">alibaba-pai/Z-Image-Turbo-Fun-Controlnet-Union-2.1 <span class="external-link-icon">↗</span></a>
                     <div class="hf-card-type">text-to-image</div>
                 </div>
             </div>
@@ -912,7 +1030,7 @@
             <div class="hf-card-header">
                 <span class="hf-card-icon">📝</span>
                 <div class="hf-card-title">
-                    <a href="https://huggingface.co/zai-org/GLM-4.7" target="_blank" rel="noopener noreferrer">zai-org/GLM-4.7</a>
+                    <a href="https://huggingface.co/zai-org/GLM-4.7" target="_blank" rel="noopener noreferrer">zai-org/GLM-4.7 <span class="external-link-icon">↗</span></a>
                     <div class="hf-card-type">text-generation</div>
                 </div>
             </div>
@@ -927,7 +1045,7 @@
             <div class="hf-card-header">
                 <span class="hf-card-icon">🎨</span>
                 <div class="hf-card-title">
-                    <a href="https://huggingface.co/Qwen/Qwen-Image-Edit-2511" target="_blank" rel="noopener noreferrer">Qwen/Qwen-Image-Edit-2511</a>
+                    <a href="https://huggingface.co/Qwen/Qwen-Image-Edit-2511" target="_blank" rel="noopener noreferrer">Qwen/Qwen-Image-Edit-2511 <span class="external-link-icon">↗</span></a>
                     <div class="hf-card-type">image-to-image</div>
                 </div>
             </div>
@@ -942,7 +1060,7 @@
             <div class="hf-card-header">
                 <span class="hf-card-icon">📝</span>
                 <div class="hf-card-title">
-                    <a href="https://huggingface.co/unsloth/MiniMax-M2.1-GGUF" target="_blank" rel="noopener noreferrer">unsloth/MiniMax-M2.1-GGUF</a>
+                    <a href="https://huggingface.co/unsloth/MiniMax-M2.1-GGUF" target="_blank" rel="noopener noreferrer">unsloth/MiniMax-M2.1-GGUF <span class="external-link-icon">↗</span></a>
                     <div class="hf-card-type">text-generation</div>
                 </div>
             </div>
@@ -957,7 +1075,7 @@
             <div class="hf-card-header">
                 <span class="hf-card-icon">🎨</span>
                 <div class="hf-card-title">
-                    <a href="https://huggingface.co/nunchaku-tech/nunchaku-z-image-turbo" target="_blank" rel="noopener noreferrer">nunchaku-tech/nunchaku-z-image-turbo</a>
+                    <a href="https://huggingface.co/nunchaku-tech/nunchaku-z-image-turbo" target="_blank" rel="noopener noreferrer">nunchaku-tech/nunchaku-z-image-turbo <span class="external-link-icon">↗</span></a>
                     <div class="hf-card-type">text-to-image</div>
                 </div>
             </div>

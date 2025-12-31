@@ -116,6 +116,44 @@
       font-weight: 600;
     }
 
+    /* GitHub Grid Layout */
+    .github-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+
+    .github-card {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 1.25rem;
+      transition: all 0.3s;
+    }
+
+    .github-card:hover {
+      border-color: var(--accent-blue);
+      box-shadow: var(--card-shadow);
+      transform: translateY(-2px);
+    }
+
+    .github-card h4 {
+      margin-bottom: 0.75rem;
+    }
+
+    .github-card p {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      line-height: 1.5;
+      margin-bottom: 0.75rem;
+    }
+
+    .github-card .lang {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
     /* 优化3: HuggingFace模型卡片化 */
     .hf-grid {
       display: grid;
@@ -211,6 +249,30 @@
       margin: 1.5rem 0;
     }
 
+    .funding-total {
+      text-align: center;
+      padding: 2rem;
+      background: var(--bg-secondary);
+      border-radius: 12px;
+      margin-bottom: 2rem;
+      border: 1px solid var(--border-color);
+    }
+
+    .funding-total .amount {
+      font-size: 3rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--accent-green), var(--accent-blue));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.5rem;
+    }
+
+    .funding-total .label {
+      color: var(--text-secondary);
+      font-size: 1rem;
+    }
+
     .funding-bar-chart {
       display: flex;
       flex-direction: column;
@@ -253,6 +315,40 @@
       font-size: 0.85rem;
       font-weight: 600;
       transition: width 1s ease-out;
+    }
+
+    /* Funding Table */
+    .funding-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1.5rem;
+    }
+
+    .funding-table th,
+    .funding-table td {
+      padding: 0.75rem 1rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .funding-table th {
+      background: var(--bg-secondary);
+      color: var(--text-secondary);
+      font-weight: 600;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+    }
+
+    .funding-table td {
+      color: var(--text-primary);
+    }
+
+    .funding-table tr:hover {
+      background: var(--bg-secondary);
+    }
+
+    .funding-table-mobile {
+      display: none;
     }
 
     /* 优化5: TOP10新闻折叠展开 */

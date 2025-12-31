@@ -27,7 +27,7 @@
     }
 
     .quick-nav-container {
-      max-width: 900px;
+      max-width: 1100px;
       margin: 0 auto;
       padding: 0 1.5rem;
       display: flex;
@@ -506,8 +506,19 @@
     }
 
     .trend-card li strong {
-      font-size: 1.05rem;
+      font-size: 1.1rem;
       color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    /* 优化趋势列表项间距 */
+    .trend-card li {
+      padding: 1rem 0;
+      line-height: 1.8;
+    }
+
+    .trend-card li:first-child {
+      padding-top: 0;
     }
 
     /* 平滑滚动 */

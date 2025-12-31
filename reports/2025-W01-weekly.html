@@ -6,11 +6,412 @@
   <title>AI 行业周报 | 2025年第01周（12.24-12.31）</title>
   <meta name="description" content="AI 行业周报 | 2025年第01周（12.24-12.31） - AI 行业周报">
   <link rel="stylesheet" href="../assets/style.css">
+  <style>
+    /* 优化1: 快速导航栏 */
+    .quick-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: rgba(13, 17, 23, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-color);
+      z-index: 99;
+      padding: 0.75rem 0;
+      transition: all 0.3s;
+    }
+
+    [data-theme="light"] .quick-nav {
+      background: rgba(255, 255, 255, 0.85);
+    }
+
+    .quick-nav-container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .quick-nav-container::-webkit-scrollbar {
+      display: none;
+    }
+
+    .quick-nav a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.9rem;
+      white-space: nowrap;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .quick-nav a:hover {
+      background: var(--bg-secondary);
+      color: var(--accent-blue);
+    }
+
+    .back-to-top {
+      margin-left: auto;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .back-to-top:hover {
+      background: var(--accent-blue);
+      color: white;
+      border-color: var(--accent-blue);
+    }
+
+    body {
+      padding-top: 60px;
+    }
+
+    /* 优化2: GitHub卡片增强 */
+    .github-card h4 a {
+      color: var(--accent-blue);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .github-card h4 a:hover {
+      color: var(--accent-purple);
+    }
+
+    .github-card .meta-row {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-top: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .github-card .category-tag {
+      background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+      color: white;
+      padding: 0.25rem 0.75rem;
+      border-radius: 12px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    .github-card .stars {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      color: var(--accent-yellow);
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    /* 优化3: HuggingFace模型卡片化 */
+    .hf-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+
+    .hf-card {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 1.25rem;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hf-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .hf-card:hover {
+      border-color: var(--accent-blue);
+      box-shadow: var(--card-shadow);
+      transform: translateY(-2px);
+    }
+
+    .hf-card:hover::before {
+      opacity: 1;
+    }
+
+    .hf-card-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .hf-card-icon {
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+
+    .hf-card-title {
+      flex: 1;
+    }
+
+    .hf-card-title a {
+      color: var(--text-primary);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+    }
+
+    .hf-card-title a:hover {
+      color: var(--accent-blue);
+    }
+
+    .hf-card-type {
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      margin-top: 0.25rem;
+    }
+
+    .hf-card-downloads {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--text-secondary);
+      font-size: 0.85rem;
+      margin-top: 0.75rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .hf-card-downloads strong {
+      color: var(--accent-green);
+      font-weight: 700;
+    }
+
+    /* 优化4: 融资数据可视化 */
+    .funding-viz {
+      margin: 1.5rem 0;
+    }
+
+    .funding-bar-chart {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-bottom: 2rem;
+    }
+
+    .funding-bar-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .funding-bar-label {
+      flex-shrink: 0;
+      width: 120px;
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      text-align: right;
+    }
+
+    .funding-bar-track {
+      flex: 1;
+      height: 32px;
+      background: var(--bg-tertiary);
+      border-radius: 6px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .funding-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent-green), var(--accent-blue));
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding: 0 0.75rem;
+      color: white;
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: width 1s ease-out;
+    }
+
+    /* 优化5: TOP10新闻折叠展开 */
+    #toggle-more-news {
+      display: none;
+    }
+
+    .more-news-wrapper {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease-out;
+    }
+
+    #toggle-more-news:checked ~ .more-news-wrapper {
+      max-height: 10000px;
+    }
+
+    .toggle-label {
+      display: block;
+      text-align: center;
+      margin: 1.5rem auto;
+      padding: 0.75rem 2rem;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      color: var(--accent-blue);
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      max-width: 200px;
+    }
+
+    .toggle-label:hover {
+      background: var(--accent-blue);
+      color: white;
+      border-color: var(--accent-blue);
+      box-shadow: var(--card-shadow);
+    }
+
+    .toggle-label .expand-text {
+      display: inline;
+    }
+
+    .toggle-label .collapse-text {
+      display: none;
+    }
+
+    #toggle-more-news:checked ~ label .expand-text {
+      display: none;
+    }
+
+    #toggle-more-news:checked ~ label .collapse-text {
+      display: inline;
+    }
+
+    /* 优化6: 移动端优化 */
+    @media (max-width: 768px) {
+      .quick-nav-container {
+        padding: 0 1rem;
+        gap: 1rem;
+      }
+
+      .quick-nav a {
+        font-size: 0.85rem;
+        padding: 0.4rem 0.75rem;
+      }
+
+      .github-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hf-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .funding-bar-item {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.5rem;
+      }
+
+      .funding-bar-label {
+        width: auto;
+        text-align: left;
+      }
+
+      .funding-table {
+        display: none;
+      }
+
+      .funding-table-mobile {
+        display: block;
+      }
+
+      .funding-card-mobile {
+        background: var(--bg-secondary);
+        border: 1px solid var(--border-color);
+        border-radius: 12px;
+        padding: 1rem;
+        margin-bottom: 1rem;
+      }
+
+      .funding-card-mobile .company {
+        font-weight: 600;
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+        color: var(--text-primary);
+      }
+
+      .funding-card-mobile .amount {
+        color: var(--accent-green);
+        font-size: 1.3rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+      }
+
+      .funding-card-mobile .detail {
+        color: var(--text-secondary);
+        font-size: 0.85rem;
+        margin-bottom: 0.25rem;
+      }
+    }
+
+    @media (min-width: 769px) {
+      .funding-table-mobile {
+        display: none;
+      }
+    }
+
+    /* 平滑滚动 */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* 动画延迟 */
+    .hf-card:nth-child(1) { animation-delay: 0.05s; }
+    .hf-card:nth-child(2) { animation-delay: 0.1s; }
+    .hf-card:nth-child(3) { animation-delay: 0.15s; }
+    .hf-card:nth-child(4) { animation-delay: 0.2s; }
+    .hf-card:nth-child(5) { animation-delay: 0.25s; }
+  </style>
 </head>
 <body>
+  <!-- 快速导航栏 -->
+  <nav class="quick-nav">
+    <div class="quick-nav-container">
+      <a href="#summary">📋 核心速览</a>
+      <a href="#top-news">📌 TOP10要闻</a>
+      <a href="#github">🔥 GitHub</a>
+      <a href="#huggingface">🤗 HuggingFace</a>
+      <a href="#funding">💰 融资数据</a>
+      <a href="#trends">📈 趋势分析</a>
+      <a href="#top" class="back-to-top">↑ 回顶部</a>
+    </div>
+  </nav>
+
   <button class="theme-toggle" onclick="toggleTheme()" title="切换主题">🌓</button>
 
-  <div class="container">
+  <div class="container" id="top">
     <!-- Header -->
     <header class="header">
       <h1>AI 行业周报 | 2025年第01周（12.24-12.31）</h1>
@@ -22,13 +423,13 @@
     </header>
 
     <!-- Summary -->
-    <section class="summary-card">
+    <section class="summary-card" id="summary">
       <h2>本周核心</h2>
       <p>本周AI行业迎来资本市场密集事件：智谱和MiniMax同周启动IPO竞逐'全球大模型第一股'、SoftBank完成410亿美元OpenAI投资创纪录、Meta 25亿收购Manus。中国AI开源生态持续突破：阿里Qwen-Image-Edit-2511、Qwen Code v0.6.0、DeepSeek震撼科学界。多模态AI成为新热点，HuggingFace trending榜图像模型占据7/10席位。AI基础设施供应商率先盈利，韩国AI芯片股创25年最佳表现。Nature呼吁全球AI安全合作，监管成为2026年焦点。</p>
     </section>
 
     <!-- Weekly Highlights -->
-    <section class="section">
+    <section class="section" id="top-news">
       <h2 class="section-title"><span class="icon">📌</span> 本周 TOP10 要闻</h2>
       
         <article class="news-card top-1">
@@ -164,153 +565,421 @@
     </section>
 
     <!-- GitHub Trending -->
-    <section class="section">
+    <section class="section" id="github">
       <h2 class="section-title"><span class="icon">🔥</span> GitHub 热门项目</h2>
       <p style="color: var(--text-secondary); margin-bottom: 1rem;">本周精选 Star>500 的 AI/ML 相关开源项目</p>
       <div class="github-grid">
         
         <article class="github-card">
-            <h4>anthropics/skills</h4>
-            <p>Skills for Claude - extend Claude's capabilities with custom tools - ⭐ 30,443</p>
-            <span class="lang">TypeScript</span>
+            <h4><a href="https://github.com/anthropics/skills" target="_blank" rel="noopener noreferrer">anthropics/skills</a></h4>
+            <p>Skills for Claude - extend Claude's capabilities with custom tools</p>
+            <div class="meta-row">
+                <span class="category-tag">LLM</span>
+                <span class="stars">⭐ 30.4K</span>
+                <span class="lang">TypeScript</span>
+            </div>
         </article>
         
         <article class="github-card">
-            <h4>sst/opencode</h4>
-            <p>Open source alternative to GitHub Copilot - AI coding assistant - ⭐ 44,637</p>
-            <span class="lang">TypeScript</span>
+            <h4><a href="https://github.com/sst/opencode" target="_blank" rel="noopener noreferrer">sst/opencode</a></h4>
+            <p>Open source alternative to GitHub Copilot - AI coding assistant</p>
+            <div class="meta-row">
+                <span class="category-tag">AI编程</span>
+                <span class="stars">⭐ 44.6K</span>
+                <span class="lang">TypeScript</span>
+            </div>
         </article>
         
         <article class="github-card">
-            <h4>exo-explore/exo</h4>
-            <p>Run your own AI cluster at home with everyday devices - ⭐ 39,049</p>
-            <span class="lang">Python</span>
+            <h4><a href="https://github.com/exo-explore/exo" target="_blank" rel="noopener noreferrer">exo-explore/exo</a></h4>
+            <p>Run your own AI cluster at home with everyday devices</p>
+            <div class="meta-row">
+                <span class="category-tag">分布式AI</span>
+                <span class="stars">⭐ 39.0K</span>
+                <span class="lang">Python</span>
+            </div>
         </article>
         
         <article class="github-card">
-            <h4>resemble-ai/chatterbox</h4>
-            <p>Open source voice cloning and speech synthesis - ⭐ 19,720</p>
-            <span class="lang">Python</span>
+            <h4><a href="https://github.com/resemble-ai/chatterbox" target="_blank" rel="noopener noreferrer">resemble-ai/chatterbox</a></h4>
+            <p>Open source voice cloning and speech synthesis</p>
+            <div class="meta-row">
+                <span class="category-tag">语音AI</span>
+                <span class="stars">⭐ 19.7K</span>
+                <span class="lang">Python</span>
+            </div>
         </article>
         
         <article class="github-card">
-            <h4>danny-avila/LibreChat</h4>
-            <p>Enhanced ChatGPT Clone with multiple AI providers support - ⭐ 24,863</p>
-            <span class="lang">TypeScript</span>
+            <h4><a href="https://github.com/danny-avila/LibreChat" target="_blank" rel="noopener noreferrer">danny-avila/LibreChat</a></h4>
+            <p>Enhanced ChatGPT Clone with multiple AI providers support</p>
+            <div class="meta-row">
+                <span class="category-tag">聊天应用</span>
+                <span class="stars">⭐ 24.9K</span>
+                <span class="lang">TypeScript</span>
+            </div>
         </article>
         
         <article class="github-card">
-            <h4>princeton-nlp/SWE-agent</h4>
-            <p>AI agent for automating software engineering tasks - ⭐ 18,592</p>
-            <span class="lang">Python</span>
+            <h4><a href="https://github.com/princeton-nlp/SWE-agent" target="_blank" rel="noopener noreferrer">princeton-nlp/SWE-agent</a></h4>
+            <p>AI agent for automating software engineering tasks</p>
+            <div class="meta-row">
+                <span class="category-tag">AI Agent</span>
+                <span class="stars">⭐ 18.6K</span>
+                <span class="lang">Python</span>
+            </div>
         </article>
         
         <article class="github-card">
-            <h4>maybe-finance/maybe</h4>
-            <p>Open source personal finance app with AI insights - ⭐ 36,421</p>
-            <span class="lang">Ruby</span>
+            <h4><a href="https://github.com/maybe-finance/maybe" target="_blank" rel="noopener noreferrer">maybe-finance/maybe</a></h4>
+            <p>Open source personal finance app with AI insights</p>
+            <div class="meta-row">
+                <span class="category-tag">金融科技</span>
+                <span class="stars">⭐ 36.4K</span>
+                <span class="lang">Ruby</span>
+            </div>
         </article>
         
         <article class="github-card">
-            <h4>OpenBMB/MiniCPM</h4>
-            <p>Efficient and powerful multimodal LLM series from OpenBMB - ⭐ 15,237</p>
-            <span class="lang">Python</span>
+            <h4><a href="https://github.com/OpenBMB/MiniCPM" target="_blank" rel="noopener noreferrer">OpenBMB/MiniCPM</a></h4>
+            <p>Efficient and powerful multimodal LLM series from OpenBMB</p>
+            <div class="meta-row">
+                <span class="category-tag">多模态</span>
+                <span class="stars">⭐ 15.2K</span>
+                <span class="lang">Python</span>
+            </div>
         </article>
         
         <article class="github-card">
-            <h4>mudler/LocalAI</h4>
-            <p>Self-hosted OpenAI-compatible API for local models - ⭐ 28,463</p>
-            <span class="lang">Go</span>
+            <h4><a href="https://github.com/mudler/LocalAI" target="_blank" rel="noopener noreferrer">mudler/LocalAI</a></h4>
+            <p>Self-hosted OpenAI-compatible API for local models</p>
+            <div class="meta-row">
+                <span class="category-tag">本地部署</span>
+                <span class="stars">⭐ 28.5K</span>
+                <span class="lang">Go</span>
+            </div>
         </article>
         
         <article class="github-card">
-            <h4>microsoft/semantic-kernel</h4>
-            <p>Integrate LLMs like OpenAI, Azure OpenAI, and Hugging Face into apps - ⭐ 24,817</p>
-            <span class="lang">C#</span>
+            <h4><a href="https://github.com/microsoft/semantic-kernel" target="_blank" rel="noopener noreferrer">microsoft/semantic-kernel</a></h4>
+            <p>Integrate LLMs like OpenAI, Azure OpenAI, and Hugging Face into apps</p>
+            <div class="meta-row">
+                <span class="category-tag">开发框架</span>
+                <span class="stars">⭐ 24.8K</span>
+                <span class="lang">C#</span>
+            </div>
         </article>
         
       </div>
     </section>
 
     <!-- HuggingFace Models -->
-    <section class="section">
+    <section class="section" id="huggingface">
       <h2 class="section-title"><span class="icon">🤗</span> Hugging Face 热门模型</h2>
       <p style="color: var(--text-secondary); margin-bottom: 1rem;">本周下载量领先的 AI 模型</p>
-      <table class="funding-table"><thead><tr><th>排名</th><th>模型</th><th>类型</th><th>下载量</th></tr></thead><tbody>
+      <div class="hf-grid">
+        
+        <article class="hf-card">
+            <div class="hf-card-header">
+                <span class="hf-card-icon">🎨</span>
+                <div class="hf-card-title">
+                    <a href="https://huggingface.co/Tongyi-MAI/Z-Image-Turbo" target="_blank" rel="noopener noreferrer">Tongyi-MAI/Z-Image-Turbo</a>
+                    <div class="hf-card-type">text-to-image</div>
+                </div>
+            </div>
+            <p style="color: var(--text-secondary); font-size: 0.85rem; line-height: 1.5;">快速文本转图像生成模型...</p>
+            <div class="hf-card-downloads">
+                <span>📥 下载量:</span>
+                <strong>399.3K</strong>
+            </div>
+        </article>
+        
+        <article class="hf-card">
+            <div class="hf-card-header">
+                <span class="hf-card-icon">✂️</span>
+                <div class="hf-card-title">
+                    <a href="https://huggingface.co/facebook/sam3" target="_blank" rel="noopener noreferrer">facebook/sam3</a>
+                    <div class="hf-card-type">mask-generation</div>
+                </div>
+            </div>
+            <p style="color: var(--text-secondary); font-size: 0.85rem; line-height: 1.5;">Meta的分割任何模型v3，图像掩码生成...</p>
+            <div class="hf-card-downloads">
+                <span>📥 下载量:</span>
+                <strong>1151.8K</strong>
+            </div>
+        </article>
+        
+        <article class="hf-card">
+            <div class="hf-card-header">
+                <span class="hf-card-icon">📝</span>
+                <div class="hf-card-title">
+                    <a href="https://huggingface.co/MiniMaxAI/MiniMax-M2.1" target="_blank" rel="noopener noreferrer">MiniMaxAI/MiniMax-M2.1</a>
+                    <div class="hf-card-type">text-generation</div>
+                </div>
+            </div>
+            <p style="color: var(--text-secondary); font-size: 0.85rem; line-height: 1.5;">高效文本生成模型...</p>
+            <div class="hf-card-downloads">
+                <span>📥 下载量:</span>
+                <strong>93.4K</strong>
+            </div>
+        </article>
+        
+        <article class="hf-card">
+            <div class="hf-card-header">
+                <span class="hf-card-icon">🎨</span>
+                <div class="hf-card-title">
+                    <a href="https://huggingface.co/unsloth/Qwen-Image-Edit-2511-GGUF" target="_blank" rel="noopener noreferrer">unsloth/Qwen-Image-Edit-2511-GGUF</a>
+                    <div class="hf-card-type">image-to-image</div>
+                </div>
+            </div>
+            <p style="color: var(--text-secondary); font-size: 0.85rem; line-height: 1.5;">Qwen图像编辑模型（GGUF格式优化）...</p>
+            <div class="hf-card-downloads">
+                <span>📥 下载量:</span>
+                <strong>79.7K</strong>
+            </div>
+        </article>
+        
+        <article class="hf-card">
+            <div class="hf-card-header">
+                <span class="hf-card-icon">🎨</span>
+                <div class="hf-card-title">
+                    <a href="https://huggingface.co/lightx2v/Qwen-Image-Edit-2511-Lightning" target="_blank" rel="noopener noreferrer">lightx2v/Qwen-Image-Edit-2511-Lightning</a>
+                    <div class="hf-card-type">image-to-image</div>
+                </div>
+            </div>
+            <p style="color: var(--text-secondary); font-size: 0.85rem; line-height: 1.5;">Qwen图像编辑快速推理版本...</p>
+            <div class="hf-card-downloads">
+                <span>📥 下载量:</span>
+                <strong>158.0K</strong>
+            </div>
+        </article>
+        
+        <article class="hf-card">
+            <div class="hf-card-header">
+                <span class="hf-card-icon">🎨</span>
+                <div class="hf-card-title">
+                    <a href="https://huggingface.co/alibaba-pai/Z-Image-Turbo-Fun-Controlnet-Union-2.1" target="_blank" rel="noopener noreferrer">alibaba-pai/Z-Image-Turbo-Fun-Controlnet-Union-2.1</a>
+                    <div class="hf-card-type">text-to-image</div>
+                </div>
+            </div>
+            <p style="color: var(--text-secondary); font-size: 0.85rem; line-height: 1.5;">阿里巴巴PAI的图像生成ControlNet模型...</p>
+            <div class="hf-card-downloads">
+                <span>📥 下载量:</span>
+                <strong>70.0K</strong>
+            </div>
+        </article>
+        
+        <article class="hf-card">
+            <div class="hf-card-header">
+                <span class="hf-card-icon">📝</span>
+                <div class="hf-card-title">
+                    <a href="https://huggingface.co/zai-org/GLM-4.7" target="_blank" rel="noopener noreferrer">zai-org/GLM-4.7</a>
+                    <div class="hf-card-type">text-generation</div>
+                </div>
+            </div>
+            <p style="color: var(--text-secondary); font-size: 0.85rem; line-height: 1.5;">清华GLM 4.7B大型语言模型...</p>
+            <div class="hf-card-downloads">
+                <span>📥 下载量:</span>
+                <strong>29.5K</strong>
+            </div>
+        </article>
+        
+        <article class="hf-card">
+            <div class="hf-card-header">
+                <span class="hf-card-icon">🎨</span>
+                <div class="hf-card-title">
+                    <a href="https://huggingface.co/Qwen/Qwen-Image-Edit-2511" target="_blank" rel="noopener noreferrer">Qwen/Qwen-Image-Edit-2511</a>
+                    <div class="hf-card-type">image-to-image</div>
+                </div>
+            </div>
+            <p style="color: var(--text-secondary); font-size: 0.85rem; line-height: 1.5;">阿里Qwen图像编辑模型...</p>
+            <div class="hf-card-downloads">
+                <span>📥 下载量:</span>
+                <strong>25.1K</strong>
+            </div>
+        </article>
+        
+        <article class="hf-card">
+            <div class="hf-card-header">
+                <span class="hf-card-icon">📝</span>
+                <div class="hf-card-title">
+                    <a href="https://huggingface.co/unsloth/MiniMax-M2.1-GGUF" target="_blank" rel="noopener noreferrer">unsloth/MiniMax-M2.1-GGUF</a>
+                    <div class="hf-card-type">text-generation</div>
+                </div>
+            </div>
+            <p style="color: var(--text-secondary); font-size: 0.85rem; line-height: 1.5;">MiniMax模型GGUF优化版...</p>
+            <div class="hf-card-downloads">
+                <span>📥 下载量:</span>
+                <strong>23.4K</strong>
+            </div>
+        </article>
+        
+        <article class="hf-card">
+            <div class="hf-card-header">
+                <span class="hf-card-icon">🎨</span>
+                <div class="hf-card-title">
+                    <a href="https://huggingface.co/nunchaku-tech/nunchaku-z-image-turbo" target="_blank" rel="noopener noreferrer">nunchaku-tech/nunchaku-z-image-turbo</a>
+                    <div class="hf-card-type">text-to-image</div>
+                </div>
+            </div>
+            <p style="color: var(--text-secondary); font-size: 0.85rem; line-height: 1.5;">Z-Image-Turbo社区优化版本...</p>
+            <div class="hf-card-downloads">
+                <span>📥 下载量:</span>
+                <strong>20.6K</strong>
+            </div>
+        </article>
+        
+      </div>
+    </section>
+
+    <!-- Funding Data -->
+    <section class="section" id="funding">
+      <h2 class="section-title"><span class="icon">💰</span> 融资数据</h2>
+      <div class="funding-viz">
+        
+    <div class="funding-total">
+        <div class="amount">$49.16B</div>
+        <div class="label">本期融资/并购总额</div>
+    </div>
+    <div class="funding-bar-chart">
+            <div class="funding-bar-item">
+                <div class="funding-bar-label">OpenAI</div>
+                <div class="funding-bar-track">
+                    <div class="funding-bar-fill" style="width: 100.0%;">$41.0B</div>
+                </div>
+            </div>
+            
+            <div class="funding-bar-item">
+                <div class="funding-bar-label">Manus</div>
+                <div class="funding-bar-track">
+                    <div class="funding-bar-fill" style="width: 6.097560975609756%;">$2.5B</div>
+                </div>
+            </div>
+            
+            <div class="funding-bar-item">
+                <div class="funding-bar-label">智谱AI</div>
+                <div class="funding-bar-track">
+                    <div class="funding-bar-fill" style="width: 1.3658536585365855%;">$560.0M</div>
+                </div>
+            </div>
+            
+            <div class="funding-bar-item">
+                <div class="funding-bar-label">MiniMax</div>
+                <div class="funding-bar-track">
+                    <div class="funding-bar-fill" style="width: 1.4634146341463417%;">$600.0M</div>
+                </div>
+            </div>
+            
+            <div class="funding-bar-item">
+                <div class="funding-bar-label">Nvidia-Groq合作</div>
+                <div class="funding-bar-track">
+                    <div class="funding-bar-fill" style="width: 10.975609756097562%;">$4.5B</div>
+                </div>
+            </div>
+            </div>
+    <table class="funding-table">
+        <thead>
+            <tr>
+                <th>日期</th>
+                <th>公司</th>
+                <th>领域</th>
+                <th>轮次</th>
+                <th>金额</th>
+                <th>投资方</th>
+            </tr>
+        </thead>
+        <tbody>
+    
         <tr>
-            <td>1</td>
-            <td><strong>Tongyi-MAI/Z-Image-Turbo</strong></td>
-            <td>text-to-image</td>
-            <td>399,253</td>
+            <td>2025-12-30</td>
+            <td><strong>OpenAI</strong></td>
+            <td>SoftBank完成对OpenAI的41...</td>
+            <td>私募融资</td>
+            <td>$41.0B</td>
+            <td>SoftBank Group...</td>
         </tr>
         
         <tr>
-            <td>2</td>
-            <td><strong>facebook/sam3</strong></td>
-            <td>mask-generation</td>
-            <td>1,151,764</td>
+            <td>2025-12-30</td>
+            <td><strong>Manus</strong></td>
+            <td>Meta收购新加坡AI智能体公司Manu...</td>
+            <td>并购</td>
+            <td>$2.5B</td>
+            <td>Meta Platforms...</td>
         </tr>
         
         <tr>
-            <td>3</td>
-            <td><strong>MiniMaxAI/MiniMax-M2.1</strong></td>
-            <td>text-generation</td>
-            <td>93,403</td>
+            <td>2025-12-30</td>
+            <td><strong>智谱AI</strong></td>
+            <td>智谱AI启动香港IPO，目标融资5.6亿...</td>
+            <td>IPO</td>
+            <td>$560.0M</td>
+            <td>公开市场, 美团, 蚂蚁集团, 腾讯...</td>
         </tr>
         
         <tr>
-            <td>4</td>
-            <td><strong>unsloth/Qwen-Image-Edit-2511-GGUF</strong></td>
-            <td>image-to-image</td>
-            <td>79,661</td>
+            <td>2025-12-31</td>
+            <td><strong>MiniMax</strong></td>
+            <td>MiniMax申请香港IPO，目标融资超...</td>
+            <td>IPO</td>
+            <td>$600.0M</td>
+            <td>阿里巴巴, 阿布扎比投资局, IDG Capital, Mi...</td>
         </tr>
         
         <tr>
-            <td>5</td>
-            <td><strong>lightx2v/Qwen-Image-Edit-2511-Lightning</strong></td>
-            <td>image-to-image</td>
-            <td>158,024</td>
+            <td>2025-12-27</td>
+            <td><strong>Nvidia-Groq合作</strong></td>
+            <td>Nvidia投资AI推理芯片公司Groq...</td>
+            <td>战略合作</td>
+            <td>$4.5B</td>
+            <td>Nvidia...</td>
         </tr>
+        </tbody></table><div class="funding-table-mobile">
+        <div class="funding-card-mobile">
+            <div class="company">OpenAI</div>
+            <div class="amount">$41.0B</div>
+            <div class="detail">轮次: 私募融资</div>
+            <div class="detail">日期: 2025-12-30</div>
+            <div class="detail">投资方: SoftBank Group</div>
+        </div>
         
-        <tr>
-            <td>6</td>
-            <td><strong>alibaba-pai/Z-Image-Turbo-Fun-Controlnet-Union-2.1</strong></td>
-            <td>text-to-image</td>
-            <td>69,984</td>
-        </tr>
+        <div class="funding-card-mobile">
+            <div class="company">Manus</div>
+            <div class="amount">$2.5B</div>
+            <div class="detail">轮次: 并购</div>
+            <div class="detail">日期: 2025-12-30</div>
+            <div class="detail">投资方: Meta Platforms</div>
+        </div>
         
-        <tr>
-            <td>7</td>
-            <td><strong>zai-org/GLM-4.7</strong></td>
-            <td>text-generation</td>
-            <td>29,533</td>
-        </tr>
+        <div class="funding-card-mobile">
+            <div class="company">智谱AI</div>
+            <div class="amount">$560.0M</div>
+            <div class="detail">轮次: IPO</div>
+            <div class="detail">日期: 2025-12-30</div>
+            <div class="detail">投资方: 公开市场, 美团, 蚂蚁集团, 腾讯</div>
+        </div>
         
-        <tr>
-            <td>8</td>
-            <td><strong>Qwen/Qwen-Image-Edit-2511</strong></td>
-            <td>image-to-image</td>
-            <td>25,122</td>
-        </tr>
+        <div class="funding-card-mobile">
+            <div class="company">MiniMax</div>
+            <div class="amount">$600.0M</div>
+            <div class="detail">轮次: IPO</div>
+            <div class="detail">日期: 2025-12-31</div>
+            <div class="detail">投资方: 阿里巴巴, 阿布扎比投资局, IDG Capital, Mirae Asset</div>
+        </div>
         
-        <tr>
-            <td>9</td>
-            <td><strong>unsloth/MiniMax-M2.1-GGUF</strong></td>
-            <td>text-generation</td>
-            <td>23,407</td>
-        </tr>
-        
-        <tr>
-            <td>10</td>
-            <td><strong>nunchaku-tech/nunchaku-z-image-turbo</strong></td>
-            <td>text-to-image</td>
-            <td>20,620</td>
-        </tr>
-        </tbody></table>
+        <div class="funding-card-mobile">
+            <div class="company">Nvidia-Groq合作</div>
+            <div class="amount">$4.5B</div>
+            <div class="detail">轮次: 战略合作</div>
+            <div class="detail">日期: 2025-12-27</div>
+            <div class="detail">投资方: Nvidia</div>
+        </div>
+        </div>
+      </div>
     </section>
 
     <!-- Trend Analysis -->
-    <section class="section">
+    <section class="section" id="trends">
       <h2 class="section-title"><span class="icon">📈</span> 核心趋势分析</h2>
       <div class="trend-card">
         <h3>本周 AI 行业核心趋势</h3>

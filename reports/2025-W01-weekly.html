@@ -17,7 +17,7 @@
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border-color);
-      z-index: 99;
+      z-index: 101;
       padding: 0.75rem 0;
       transition: all 0.3s;
     }
@@ -284,6 +284,8 @@
       display: flex;
       align-items: center;
       gap: 1rem;
+      position: relative;
+      padding-right: 90px; /* 预留金额显示空间 */
     }
 
     .funding-bar-label {
@@ -307,14 +309,19 @@
       height: 100%;
       background: linear-gradient(90deg, var(--accent-green), var(--accent-blue));
       border-radius: 6px;
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      padding: 0 0.75rem;
-      color: white;
+      transition: width 1s ease-out;
+    }
+
+    .funding-bar-amount {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-primary);
       font-size: 0.85rem;
       font-weight: 600;
-      transition: width 1s ease-out;
+      min-width: 80px;
+      text-align: right;
     }
 
     /* Funding Table */
@@ -470,12 +477,37 @@
         font-size: 0.85rem;
         margin-bottom: 0.25rem;
       }
+
+      /* 移动端关键词换行优化 */
+      .keywords {
+        display: block;
+        margin-left: 0;
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+      }
     }
 
     @media (min-width: 769px) {
       .funding-table-mobile {
         display: none;
       }
+    }
+
+    /* 趋势分析关键词样式 */
+    .keywords {
+      display: inline-block;
+      margin-left: 1rem;
+      padding: 0.25rem 0.75rem;
+      background: var(--bg-tertiary);
+      border-radius: 6px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    .trend-card li strong {
+      font-size: 1.05rem;
+      color: var(--text-primary);
     }
 
     /* 平滑滚动 */
@@ -941,36 +973,41 @@
             <div class="funding-bar-item">
                 <div class="funding-bar-label">OpenAI</div>
                 <div class="funding-bar-track">
-                    <div class="funding-bar-fill" style="width: 100.0%;">$41.0B</div>
+                    <div class="funding-bar-fill" style="width: 100.0%;"></div>
                 </div>
+                <span class="funding-bar-amount">$41.0B</span>
             </div>
             
             <div class="funding-bar-item">
                 <div class="funding-bar-label">Manus</div>
                 <div class="funding-bar-track">
-                    <div class="funding-bar-fill" style="width: 6.097560975609756%;">$2.5B</div>
+                    <div class="funding-bar-fill" style="width: 6.097560975609756%;"></div>
                 </div>
+                <span class="funding-bar-amount">$2.5B</span>
             </div>
             
             <div class="funding-bar-item">
                 <div class="funding-bar-label">智谱AI</div>
                 <div class="funding-bar-track">
-                    <div class="funding-bar-fill" style="width: 1.3658536585365855%;">$560.0M</div>
+                    <div class="funding-bar-fill" style="width: 1.3658536585365855%;"></div>
                 </div>
+                <span class="funding-bar-amount">$560.0M</span>
             </div>
             
             <div class="funding-bar-item">
                 <div class="funding-bar-label">MiniMax</div>
                 <div class="funding-bar-track">
-                    <div class="funding-bar-fill" style="width: 1.4634146341463417%;">$600.0M</div>
+                    <div class="funding-bar-fill" style="width: 1.4634146341463417%;"></div>
                 </div>
+                <span class="funding-bar-amount">$600.0M</span>
             </div>
             
             <div class="funding-bar-item">
                 <div class="funding-bar-label">Nvidia-Groq合作</div>
                 <div class="funding-bar-track">
-                    <div class="funding-bar-fill" style="width: 10.975609756097562%;">$4.5B</div>
+                    <div class="funding-bar-fill" style="width: 10.975609756097562%;"></div>
                 </div>
+                <span class="funding-bar-amount">$4.5B</span>
             </div>
             </div>
     <table class="funding-table">
